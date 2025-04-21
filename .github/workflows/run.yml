@@ -55,15 +55,6 @@ jobs:
         run: |
           npm run scrape:users
 
-      - name: Save changes to scraper repo
-        run: |
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git add .
-          git commit --author="${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>" -m "Update progress"
-          git rebase
-          git push
-
       - name: Save changes to forumPosts archive
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
@@ -129,15 +120,6 @@ jobs:
       - name: Run users archive script
         run: |
           npm run scrape:users
-
-      - name: Save changes to scraper repo
-        run: |
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git add .
-          git commit --author="${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>" -m "Update progress"
-          git rebase
-          git push
 
       - name: Save changes to forumPosts archive
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -205,15 +187,6 @@ jobs:
         run: |
           npm run scrape:users
 
-      - name: Save changes to scraper repo
-        run: |
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git add .
-          git commit --author="${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>" -m "Update progress"
-          git rebase
-          git push
-
       - name: Save changes to forumPosts archive
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
@@ -255,15 +228,6 @@ jobs:
       - name: Run users archive script
         run: |
           npm run scrape:users
-
-      - name: Save changes to scraper repo
-        run: |
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git add .
-          git commit --author="${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>" -m "Update progress"
-          git rebase
-          git push
 
       - name: Save changes to users archive
         uses: stefanzweifel/git-auto-commit-action@v5
