@@ -3,7 +3,7 @@ import { fetchJson, getPath } from "../shared.js";
 
 import progress from "./progress.json" with { type: "json" };
 
-const fetchNums = 350;
+const fetchNums = 100;
 
 const skips = [[[811497, 830000], 20686948]];
 for (const skip of skips) {
@@ -82,8 +82,6 @@ for (let i = progress.users; i < progress.users + fetchNums; i++) {
 		fs.writeFileSync(p, JSON.stringify(user, null, 2));
 
 		newProgress.users = i + 1;
-
-		await new Promise((resolve) => setTimeout(resolve, 150));
 	} catch (e) {
 		console.error(e);
 	}

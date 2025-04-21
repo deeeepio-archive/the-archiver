@@ -54,8 +54,6 @@ for (let i = progress.maps; i < progress.maps + fetchNums; i++) {
 		fs.writeFileSync(p, JSON.stringify(map, null, 2));
 
 		newProgress.maps = i + 1;
-
-		await new Promise((resolve) => setTimeout(resolve, 150));
 	} catch (e) {
 		console.error(e);
 	}
