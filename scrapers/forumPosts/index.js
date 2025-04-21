@@ -3,7 +3,7 @@ import { fetchJson, getPath } from "../shared.js";
 
 import progress from "./progress.json" with { type: "json" };
 
-const fetchNums = 15;
+const fetchNums = 30;
 
 const skips = [];
 for (const skip of skips) {
@@ -19,7 +19,7 @@ const getRegion = async (id) => {
 		const post = await fetchJson(
 			`https://api.deeeep.io/forumPosts/${region}/${id}`,
 		);
-		await new Promise((resolve) => setTimeout(resolve, 1000));
+		await new Promise((resolve) => setTimeout(resolve, 250));
 		if (!post.statusCode) {
 			return { post, region };
 		}

@@ -3,7 +3,7 @@ import { fetchJson, getPath } from "../shared.js";
 
 import progress from "./progress.json" with { type: "json" };
 
-const fetchNums = 100;
+const fetchNums = 150;
 
 const skips = [[[811497, 830000], 20686948]];
 for (const skip of skips) {
