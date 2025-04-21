@@ -10,6 +10,8 @@ concurrency:
 jobs:
   forumPosts:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout scraper
         uses: actions/checkout@v4
@@ -37,6 +39,8 @@ jobs:
 
   maps:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout scraper
         uses: actions/checkout@v4
@@ -64,6 +68,8 @@ jobs:
 
   users:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout scraper
         uses: actions/checkout@v4
