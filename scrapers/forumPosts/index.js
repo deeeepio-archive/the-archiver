@@ -19,7 +19,6 @@ const getRegion = async (id) => {
 		const post = await fetchJson(
 			`https://api.deeeep.io/forumPosts/${region}/${id}`,
 		);
-		await new Promise((resolve) => setTimeout(resolve, 100));
 		if (!post.statusCode) {
 			return { post, region };
 		}
