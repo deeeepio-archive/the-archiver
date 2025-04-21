@@ -15,11 +15,11 @@ const newProgress = { ...progress };
 
 const getMap = async (id) => {
 	const map = await fetchJson(`https://api.deeeep.io/maps/${id}`);
+  if (map.statusCode === 429) {
+    return "throttled";
+  }
 	if (map.statusCode >= 400) {
 		return null;
-	}
-	if (map.statusCode === 429) {
-		return "throttled";
 	}
 	return map;
 };

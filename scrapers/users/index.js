@@ -15,11 +15,11 @@ const newProgress = { ...progress };
 
 const getUser = async (id) => {
 	const user = await fetchJson(`https://api.deeeep.io/users/${id}?ref=profile`);
-	if (user.statusCode >= 400) {
-		return null;
-	}
 	if (user.statusCode === 429) {
 		return "throttled";
+	}
+	if (user.statusCode >= 400) {
+		return null;
 	}
 	const socialNetworks = await fetchJson(
 		`https://api.deeeep.io/socialNetworks/u/${id}`,
