@@ -15,10 +15,13 @@ jobs:
     steps:
       - name: Checkout scraper
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Checkout forumPosts archive
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.ACCESS_TOKEN }}
           repository: deeeepio-archive/forumPosts
           path: forumPosts
 
@@ -48,10 +51,13 @@ jobs:
     steps:
       - name: Checkout scraper
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Checkout maps archive
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.ACCESS_TOKEN }}
           repository: deeeepio-archive/maps
           path: maps
 
@@ -81,10 +87,13 @@ jobs:
     steps:
       - name: Checkout scraper
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Checkout users archive
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.ACCESS_TOKEN }}
           repository: deeeepio-archive/users
           path: users
 
