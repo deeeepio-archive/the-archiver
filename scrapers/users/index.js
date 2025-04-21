@@ -18,7 +18,7 @@ const getUser = async (id) => {
 	if (user.statusCode >= 400) {
 		return null;
 	}
-	if (map.statusCode === 429) {
+	if (user.statusCode === 429) {
 		return "throttled";
 	}
 	const socialNetworks = await fetchJson(
