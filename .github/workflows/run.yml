@@ -1,0 +1,90 @@
+name: Archive
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: "archive"
+  cancel-in-progress: false
+
+jobs:
+  forumPosts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout scraper
+        uses: actions/checkout@v4
+
+      - name: Checkout forumPosts archive
+        uses: actions/checkout@v4
+        with:
+          repository: deeeepio-archive/forumPosts
+          path: forumPosts
+
+      - name: Run script
+        run: |
+          npm run scrape:forumPosts
+
+      - name: Save changes to scraper repo
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update forumPosts progress
+
+      - name: Save changes to forumPosts archive
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update forumPosts archive
+          repository: forumPosts
+
+  maps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout scraper
+        uses: actions/checkout@v4
+
+      - name: Checkout maps archive
+        uses: actions/checkout@v4
+        with:
+          repository: deeeepio-archive/maps
+          path: maps
+
+      - name: Run script
+        run: |
+          npm run scrape:maps
+
+      - name: Save changes to scraper repo
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update maps progress
+
+      - name: Save changes to maps archive
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update maps archive
+          repository: maps
+
+  users:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout scraper
+        uses: actions/checkout@v4
+
+      - name: Checkout users archive
+        uses: actions/checkout@v4
+        with:
+          repository: deeeepio-archive/users
+          path: users
+
+      - name: Run script
+        run: |
+          npm run scrape:users
+
+      - name: Save changes to scraper repo
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update users progress
+
+      - name: Save changes to users archive
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update users archive
+          repository: users

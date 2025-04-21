@@ -1,0 +1,8 @@
+{
+	"type": "module",
+	"scripts": {
+		"scrape:forumPosts": "node scrapers/forumPosts/index.js",
+		"scrape:maps": "node scrapers/maps/index.js",
+		"scrape:users": "node scrapers/users/index.js"
+	}
+}
