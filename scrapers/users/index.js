@@ -21,17 +21,15 @@ const getUser = async (id) => {
 	if (user.statusCode >= 400) {
 		return null;
 	}
-	const socialNetworks = await fetchJson(
-		`https://api.deeeep.io/socialNetworks/u/${id}`,
-	);
-	const userStats = await fetchJson(`https://api.deeeep.io/userStats/${id}`);
-
-	const creationsMaps = await fetchJson(
-		`https://api.deeeep.io/maps/u/${id}?page=1&count=10000&orderBy=created_at&direction=DESC`,
-	);
-	const creationsSkins = await fetchJson(
-		`https://api.deeeep.io/skins/creator/${id}`,
-	);
+	const [socialNetworks, userStats, creationsMaps, creationsSkins] =
+		await Promise.all([
+			fetchJson(`https://api.deeeep.io/socialNetworks/u/${id}`),
+			fetchJson(`https://api.deeeep.io/userStats/${id}`),
+			fetchJson(
+				`https://api.deeeep.io/maps/u/${id}?page=1&count=10000&orderBy=created_at&direction=DESC`,
+			),
+			fetchJson(`https://api.deeeep.io/skins/creator/${id}`),
+		]);
 	if (
 		socialNetworks.statusCode === 429 ||
 		userStats.statusCode === 429 ||
