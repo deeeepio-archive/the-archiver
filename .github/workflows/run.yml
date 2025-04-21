@@ -31,7 +31,7 @@ jobs:
 
       - name: Sync
         run: |
-          git config pull.rebase true
+          git config pull.rebase false
           git pull --depth=1
 
       - name: Save changes to scraper repo
@@ -68,7 +68,7 @@ jobs:
 
       - name: Sync
         run: |
-          git config pull.rebase true
+          git config pull.rebase false
           git pull --depth=1
 
       - name: Save changes to scraper repo
@@ -105,7 +105,7 @@ jobs:
 
       - name: Sync
         run: |
-          git config pull.rebase true
+          git config pull.rebase false
           git pull --depth=1
 
       - name: Save changes to scraper repo
