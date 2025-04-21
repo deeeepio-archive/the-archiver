@@ -84,6 +84,6 @@ const end = Date.now();
 console.log("Time:", (end - start) / 1000, "seconds");
 
 fs.writeFileSync(
-	"scrapers/forumPosts/progress.json",
+	"forumPosts/progress.json",
 	`${JSON.stringify(newProgress, null, 2)}\n`,
 );

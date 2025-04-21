@@ -63,6 +63,6 @@ const end = Date.now();
 console.log("Time:", (end - start) / 1000, "seconds");
 
 fs.writeFileSync(
-	"scrapers/maps/progress.json",
+	"maps/progress.json",
 	`${JSON.stringify(newProgress, null, 2)}\n`,
 );
