@@ -82,6 +82,8 @@ for (let i = progress.users; i < progress.users + fetchNums; i++) {
 		fs.writeFileSync(p, JSON.stringify(user, null, 2));
 
 		newProgress.users = i + 1;
+
+		await new Promise((resolve) => setTimeout(resolve, 150));
 	} catch (e) {
 		console.error(e);
 	}

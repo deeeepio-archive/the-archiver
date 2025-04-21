@@ -3,7 +3,7 @@ import { fetchJson, getPath } from "../shared.js";
 
 import progress from "./progress.json" with { type: "json" };
 
-const fetchNums = 50;
+const fetchNums = 100;
 
 const skips = [];
 for (const skip of skips) {
@@ -15,9 +15,9 @@ const newProgress = { ...progress };
 
 const getMap = async (id) => {
 	const map = await fetchJson(`https://api.deeeep.io/maps/${id}`);
-  if (map.statusCode === 429) {
-    return "throttled";
-  }
+	if (map.statusCode === 429) {
+		return "throttled";
+	}
 	if (map.statusCode >= 400) {
 		return null;
 	}
@@ -54,6 +54,8 @@ for (let i = progress.maps; i < progress.maps + fetchNums; i++) {
 		fs.writeFileSync(p, JSON.stringify(map, null, 2));
 
 		newProgress.maps = i + 1;
+
+		await new Promise((resolve) => setTimeout(resolve, 150));
 	} catch (e) {
 		console.error(e);
 	}
