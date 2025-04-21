@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { fetchJson, getPath } from "../shared.js";
 
-import progress from "./progress.json" with { type: "json" };
+import progress from "../../maps/progress.json" with { type: "json" };
 
 const fetchNums = 200;
 
