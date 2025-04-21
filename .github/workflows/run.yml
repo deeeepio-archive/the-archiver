@@ -26,6 +26,10 @@ jobs:
         run: |
           npm run scrape:forumPosts
 
+      - name: Sync
+        run: |
+          git pull --depth=1
+
       - name: Save changes to scraper repo
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
@@ -55,6 +59,10 @@ jobs:
         run: |
           npm run scrape:maps
 
+      - name: Sync
+        run: |
+          git pull --depth=1
+
       - name: Save changes to scraper repo
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
@@ -83,6 +91,10 @@ jobs:
       - name: Run script
         run: |
           npm run scrape:users
+
+      - name: Sync
+        run: |
+          git pull --depth=1
 
       - name: Save changes to scraper repo
         uses: stefanzweifel/git-auto-commit-action@v5
