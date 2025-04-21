@@ -29,15 +29,12 @@ jobs:
         run: |
           npm run scrape:forumPosts
 
-      - name: Sync
-        run: |
-          git config pull.rebase false
-          git pull --depth=1
-
       - name: Save changes to scraper repo
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: Update forumPosts progress
+        run: |
+          git add .
+          git commit -m "Update forumPosts progress"
+          git rebase
+          git push
 
       - name: Save changes to forumPosts archive
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -66,15 +63,12 @@ jobs:
         run: |
           npm run scrape:maps
 
-      - name: Sync
-        run: |
-          git config pull.rebase false
-          git pull --depth=1
-
       - name: Save changes to scraper repo
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: Update maps progress
+        run: |
+          git add .
+          git commit -m "Update maps progress"
+          git rebase
+          git push
 
       - name: Save changes to maps archive
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -103,15 +97,12 @@ jobs:
         run: |
           npm run scrape:users
 
-      - name: Sync
-        run: |
-          git config pull.rebase false
-          git pull --depth=1
-
       - name: Save changes to scraper repo
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: Update users progress
+        run: |
+          git add .
+          git commit -m "Update users progress"
+          git rebase
+          git push
 
       - name: Save changes to users archive
         uses: stefanzweifel/git-auto-commit-action@v5
