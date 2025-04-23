@@ -71,8 +71,8 @@ fs.writeFileSync(
 	".github/workflows/run.yml",
 	generateContent({
 		forumPosts: 10,
-		maps: 12,
-		users: 12,
+		maps: 10,
+		users: 10,
 	}),
 	"utf-8",
 );
