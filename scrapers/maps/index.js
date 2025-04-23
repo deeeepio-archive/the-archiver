@@ -10,6 +10,7 @@ const skips = [
 	[[34079, 35000], 43899],
 	[[43957, 45000], 94995],
 	[[94996, 96000], 147432],
+	[[147433, 148000], 244170],
 ];
 for (const skip of skips) {
 	if (progress.maps > skip[0][0] && progress.maps < skip[0][1]) {
