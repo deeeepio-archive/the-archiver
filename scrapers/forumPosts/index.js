@@ -45,6 +45,7 @@ const getPost = async (id) => {
 	};
 };
 
+let allInvalid = true;
 const start = Date.now();
 for (let i = progress.forumPosts; i < progress.forumPosts + fetchNums; i++) {
 	try {
@@ -55,12 +56,10 @@ for (let i = progress.forumPosts; i < progress.forumPosts + fetchNums; i++) {
 		}
 
 		console.log("Fetching forum post ID", i);
+		newProgress.forumPosts = i + 1;
 
 		const post = await getPost(i);
 		if (post === null) {
-			if (i < newProgress.newThreshold) {
-				newProgress.forumPosts = i + 1;
-			}
 			continue;
 		}
 		if (post === "throttled") {
@@ -68,16 +67,19 @@ for (let i = progress.forumPosts; i < progress.forumPosts + fetchNums; i++) {
 			newProgress.forumPosts = i;
 			break;
 		}
+		allInvalid = false;
 		post.archived_at = new Date().toJSON();
 
 		const p = `forumPosts/${getPath(i)}`;
 		fs.mkdirSync(p.split("/").slice(0, -1).join("/"), { recursive: true });
 		fs.writeFileSync(p, JSON.stringify(post, null, 2));
-
-		newProgress.forumPosts = i + 1;
 	} catch (e) {
 		console.error(e);
 	}
+}
+if (allInvalid && progress.forumPosts > progress.newThreshold) {
+	newProgress.newThreshold = progress.forumPosts;
+	newProgress.forumPosts = 0;
 }
 const end = Date.now();
 

@@ -24,6 +24,7 @@ const getMap = async (id) => {
 	return map;
 };
 
+let allInvalid = true;
 const start = Date.now();
 for (let i = progress.maps; i < progress.maps + fetchNums; i++) {
 	try {
@@ -34,12 +35,10 @@ for (let i = progress.maps; i < progress.maps + fetchNums; i++) {
 		}
 
 		console.log("Fetching map ID", i);
+		newProgress.maps = i + 1;
 
 		const map = await getMap(i);
 		if (map === null) {
-			if (i < newProgress.newThreshold) {
-				newProgress.maps = i + 1;
-			}
 			continue;
 		}
 		if (map === "throttled") {
@@ -47,16 +46,19 @@ for (let i = progress.maps; i < progress.maps + fetchNums; i++) {
 			newProgress.maps = i;
 			break;
 		}
+		allInvalid = false;
 		map.archived_at = new Date().toJSON();
 
 		const p = `maps/${getPath(i)}`;
 		fs.mkdirSync(p.split("/").slice(0, -1).join("/"), { recursive: true });
 		fs.writeFileSync(p, JSON.stringify(map, null, 2));
-
-		newProgress.maps = i + 1;
 	} catch (e) {
 		console.error(e);
 	}
+}
+if (allInvalid && progress.maps > progress.newThreshold) {
+	newProgress.newThreshold = progress.maps;
+	newProgress.maps = 0;
 }
 const end = Date.now();
 

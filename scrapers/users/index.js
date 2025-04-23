@@ -50,6 +50,7 @@ const getUser = async (id) => {
 	};
 };
 
+let allInvalid = true;
 const start = Date.now();
 for (let i = progress.users; i < progress.users + fetchNums; i++) {
 	try {
@@ -60,12 +61,10 @@ for (let i = progress.users; i < progress.users + fetchNums; i++) {
 		}
 
 		console.log("Fetching user ID", i);
+		newProgress.users = i + 1;
 
 		const user = await getUser(i);
 		if (user === null) {
-			if (i < newProgress.newThreshold) {
-				newProgress.users = i + 1;
-			}
 			continue;
 		}
 		if (user === "throttled") {
@@ -73,16 +72,19 @@ for (let i = progress.users; i < progress.users + fetchNums; i++) {
 			newProgress.users = i;
 			break;
 		}
+		allInvalid = false;
 		user.archived_at = new Date().toJSON();
 
 		const p = `users/${getPath(i)}`;
 		fs.mkdirSync(p.split("/").slice(0, -1).join("/"), { recursive: true });
 		fs.writeFileSync(p, JSON.stringify(user, null, 2));
-
-		newProgress.users = i + 1;
 	} catch (e) {
 		console.error(e);
 	}
+}
+if (allInvalid && progress.users > progress.newThreshold) {
+	newProgress.newThreshold = progress.users;
+	newProgress.users = 0;
 }
 const end = Date.now();
 
