@@ -128,4 +128,4 @@ const generateContent = (num) =>
 		.map((_, i) => template(i + 1))
 		.join("");
 
-fs.writeFileSync(".github/workflows/run.yml", generateContent(10), "utf-8");
+fs.writeFileSync(".github/workflows/run.yml", generateContent(11), "utf-8");
