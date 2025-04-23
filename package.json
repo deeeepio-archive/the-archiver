@@ -2,8 +2,11 @@
 	"type": "module",
 	"scripts": {
 		"generate:run": "node .github/workflows/run-generator.js",
+
 		"scrape:forumPosts": "node scrapers/forumPosts/index.js",
 		"scrape:maps": "node scrapers/maps/index.js",
-		"scrape:users": "node scrapers/users/index.js"
+		"scrape:users": "node scrapers/users/index.js",
+
+		"scripts:migrate-folders": "node scripts/migrate-folders.js"
 	}
 }

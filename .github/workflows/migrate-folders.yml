@@ -1,0 +1,59 @@
+name: Migrate folder sturucture
+on:
+  workflow_dispatch:
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout scraper
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          ref: main
+
+      - name: Checkout forumPosts archive
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          ref: main
+          repository: deeeepio-archive/forumPosts
+          path: forumPosts
+
+      - name: Checkout maps archive
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          ref: main
+          repository: deeeepio-archive/maps
+          path: maps
+
+      - name: Checkout users archive
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          ref: main
+          repository: deeeepio-archive/users
+          path: users
+
+      - name: Run folder migration script
+        run: |
+          npm run scripts:migrate-folders
+
+      - name: Save changes to forumPosts archive
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update folder structure
+          repository: forumPosts
+
+      - name: Save changes to maps archive
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update folder structure
+          repository: maps
+
+      - name: Save changes to users archive
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update folder structure
+          repository: users
