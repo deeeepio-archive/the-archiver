@@ -14,7 +14,7 @@ jobs:`;
 const template = (type, num) =>
 	`
   scrape-${type}-${num}:
-    runs-on: macos-latest${
+    runs-on: ubuntu-latest${
 			num === 1
 				? ""
 				: `

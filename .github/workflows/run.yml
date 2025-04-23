@@ -9,7 +9,7 @@ concurrency:
 
 jobs:
   scrape-forumPosts-1:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
@@ -40,7 +40,7 @@ jobs:
           add_options: --sparse
 
   scrape-maps-1:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
@@ -71,7 +71,7 @@ jobs:
           add_options: --sparse
 
   scrape-users-1:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
@@ -102,7 +102,7 @@ jobs:
           add_options: --sparse
 
   scrape-forumPosts-2:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-forumPosts-1
     permissions:
       contents: write
@@ -134,7 +134,7 @@ jobs:
           add_options: --sparse
 
   scrape-maps-2:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-maps-1
     permissions:
       contents: write
@@ -166,7 +166,7 @@ jobs:
           add_options: --sparse
 
   scrape-users-2:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-users-1
     permissions:
       contents: write
@@ -198,7 +198,7 @@ jobs:
           add_options: --sparse
 
   scrape-forumPosts-3:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-forumPosts-2
     permissions:
       contents: write
@@ -230,7 +230,7 @@ jobs:
           add_options: --sparse
 
   scrape-maps-3:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-maps-2
     permissions:
       contents: write
@@ -262,7 +262,7 @@ jobs:
           add_options: --sparse
 
   scrape-users-3:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-users-2
     permissions:
       contents: write
@@ -294,7 +294,7 @@ jobs:
           add_options: --sparse
 
   scrape-forumPosts-4:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-forumPosts-3
     permissions:
       contents: write
@@ -326,7 +326,7 @@ jobs:
           add_options: --sparse
 
   scrape-maps-4:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-maps-3
     permissions:
       contents: write
@@ -358,7 +358,7 @@ jobs:
           add_options: --sparse
 
   scrape-users-4:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-users-3
     permissions:
       contents: write
@@ -390,7 +390,7 @@ jobs:
           add_options: --sparse
 
   scrape-forumPosts-5:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-forumPosts-4
     permissions:
       contents: write
@@ -422,7 +422,7 @@ jobs:
           add_options: --sparse
 
   scrape-maps-5:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-maps-4
     permissions:
       contents: write
@@ -454,7 +454,7 @@ jobs:
           add_options: --sparse
 
   scrape-users-5:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-users-4
     permissions:
       contents: write
@@ -486,7 +486,7 @@ jobs:
           add_options: --sparse
 
   scrape-forumPosts-6:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-forumPosts-5
     permissions:
       contents: write
@@ -518,7 +518,7 @@ jobs:
           add_options: --sparse
 
   scrape-maps-6:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-maps-5
     permissions:
       contents: write
@@ -550,7 +550,7 @@ jobs:
           add_options: --sparse
 
   scrape-users-6:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-users-5
     permissions:
       contents: write
@@ -582,7 +582,7 @@ jobs:
           add_options: --sparse
 
   scrape-forumPosts-7:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-forumPosts-6
     permissions:
       contents: write
@@ -614,7 +614,7 @@ jobs:
           add_options: --sparse
 
   scrape-maps-7:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-maps-6
     permissions:
       contents: write
@@ -646,7 +646,7 @@ jobs:
           add_options: --sparse
 
   scrape-users-7:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-users-6
     permissions:
       contents: write
@@ -678,7 +678,7 @@ jobs:
           add_options: --sparse
 
   scrape-forumPosts-8:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-forumPosts-7
     permissions:
       contents: write
@@ -710,7 +710,7 @@ jobs:
           add_options: --sparse
 
   scrape-maps-8:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-maps-7
     permissions:
       contents: write
@@ -742,7 +742,7 @@ jobs:
           add_options: --sparse
 
   scrape-users-8:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: scrape-users-7
     permissions:
       contents: write
