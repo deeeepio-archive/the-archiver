@@ -70,9 +70,9 @@ const generateContent = (scrapers) => {
 fs.writeFileSync(
 	".github/workflows/run.yml",
 	generateContent({
-		forumPosts: 12,
-		maps: 14,
-		users: 14,
+		forumPosts: 10,
+		maps: 12,
+		users: 12,
 	}),
 	"utf-8",
 );
