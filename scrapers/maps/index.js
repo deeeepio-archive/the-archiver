@@ -5,7 +5,12 @@ import progress from "../../maps/progress.json" with { type: "json" };
 
 const fetchNums = 200;
 
-const skips = [];
+const skips = [
+	[[15819, 17000], 34078],
+	[[34079, 35000], 43899],
+	[[43957, 45000], 94995],
+	[[94996, 96000], 147432],
+];
 for (const skip of skips) {
 	if (progress.maps > skip[0][0] && progress.maps < skip[0][1]) {
 		progress.maps = skip[1];
