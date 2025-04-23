@@ -2,6 +2,9 @@ import fs from "node:fs";
 import { fetchJson, getPath } from "../shared.js";
 
 import progress from "../../forumPosts/progress.json" with { type: "json" };
+import regionCache from "../../forumPosts/regionCache.json" with {
+	type: "json",
+};
 
 const fetchNums = 100;
 
@@ -12,9 +15,18 @@ for (const skip of skips) {
 	}
 }
 const newProgress = { ...progress };
+const newRegionCache = { ...regionCache };
 
 const regions = ["en", "zh", "pt", "es", "bork", "tr", "ru", "vi", "pl"];
 const getRegion = async (id) => {
+	const cached = newRegionCache[id];
+	if (cached) {
+		const post = await fetchJson(
+			`https://api.deeeep.io/forumPosts/${cached}/${id}`,
+		);
+		return { post, region: cached };
+	}
+
 	for (const region of regions) {
 		const post = await fetchJson(
 			`https://api.deeeep.io/forumPosts/${region}/${id}`,
@@ -39,6 +51,7 @@ const getPost = async (id) => {
 	const comments = await fetchJson(
 		`https://api.deeeep.io/forumPosts/${region}/${id}/comments`,
 	);
+	newRegionCache[id] = region;
 	return {
 		...post,
 		comments,
@@ -89,3 +102,4 @@ fs.writeFileSync(
 	"forumPosts/progress.json",
 	`${JSON.stringify(newProgress, null, 2)}\n`,
 );
+fs.writeFileSync("forumPosts/regionCache.json", JSON.stringify(newRegionCache));
