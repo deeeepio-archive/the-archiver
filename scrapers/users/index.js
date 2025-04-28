@@ -67,12 +67,12 @@ for (let i = progress.users; i < progress.users + fetchNums; i++) {
 		if (user === null) {
 			continue;
 		}
+		allInvalid = false;
 		if (user === "throttled") {
 			console.log("Rate limit reached!");
 			newProgress.users = i;
 			break;
 		}
-		allInvalid = false;
 		user.archived_at = new Date().toJSON();
 
 		const p = `users/${getPath(i)}`;
