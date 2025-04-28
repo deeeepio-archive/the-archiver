@@ -62,7 +62,6 @@ for (let i = progress.maps; i < progress.maps + fetchNums; i++) {
 		console.error(e);
 	}
 }
-console.log("All invalid:", allInvalid);
 if (allInvalid && progress.maps > progress.newThreshold) {
 	newProgress.newThreshold = progress.maps;
 	newProgress.maps = 0;

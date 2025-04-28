@@ -82,7 +82,6 @@ for (let i = progress.users; i < progress.users + fetchNums; i++) {
 		console.error(e);
 	}
 }
-console.log("All invalid:", allInvalid);
 if (allInvalid && progress.users > progress.newThreshold) {
 	newProgress.newThreshold = progress.users;
 	newProgress.users = 0;

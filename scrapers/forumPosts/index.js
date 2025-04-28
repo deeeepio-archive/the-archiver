@@ -90,7 +90,6 @@ for (let i = progress.forumPosts; i < progress.forumPosts + fetchNums; i++) {
 		console.error(e);
 	}
 }
-console.log("All invalid:", allInvalid);
 if (allInvalid && progress.forumPosts > progress.newThreshold) {
 	newProgress.newThreshold = progress.forumPosts;
 	newProgress.forumPosts = 0;
