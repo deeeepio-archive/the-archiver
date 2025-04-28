@@ -75,12 +75,12 @@ for (let i = progress.forumPosts; i < progress.forumPosts + fetchNums; i++) {
 		if (post === null) {
 			continue;
 		}
-		allInvalid = false;
 		if (post === "throttled") {
 			console.log("Rate limit reached!");
 			newProgress.forumPosts = i;
 			break;
 		}
+		allInvalid = false;
 		post.archived_at = new Date().toJSON();
 
 		const p = `forumPosts/${getPath(i)}`;

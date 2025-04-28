@@ -47,12 +47,12 @@ for (let i = progress.maps; i < progress.maps + fetchNums; i++) {
 		if (map === null) {
 			continue;
 		}
-		allInvalid = false;
 		if (map === "throttled") {
 			console.log("Rate limit reached!");
 			newProgress.maps = i;
 			break;
 		}
+		allInvalid = false;
 		map.archived_at = new Date().toJSON();
 
 		const p = `maps/${getPath(i)}`;
