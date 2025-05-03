@@ -3,9 +3,10 @@ import { fetchJson, getPath } from "../shared.js";
 
 import progress from "../../users/progress.json" with { type: "json" };
 
-const fetchNums = 150;
+const fetchNums = 2500;
 
-const skips = [[[811497, 830000], 20686948]];
+// const skips = [[[811497, 830000], 20686948]];
+const skips = [];
 for (const skip of skips) {
 	if (progress.users > skip[0][0] && progress.users < skip[0][1]) {
 		progress.users = skip[1];
@@ -52,7 +53,7 @@ const getUser = async (id) => {
 
 let allInvalid = true;
 const start = Date.now();
-for (let i = progress.users; i < progress.users + fetchNums; i++) {
+for (let i = progress.users; i < progress.users + fetchNums; i += 20) {
 	try {
 		const time = Date.now();
 		if (time - start > 4.5 * 60 * 1000) {
@@ -61,7 +62,7 @@ for (let i = progress.users; i < progress.users + fetchNums; i++) {
 		}
 
 		console.log("Fetching user ID", i);
-		newProgress.users = i + 1;
+		newProgress.users = i + 20;
 
 		const user = await getUser(i);
 		if (user === null) {
