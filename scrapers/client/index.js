@@ -9,6 +9,7 @@ const recursiveWriteFileSync = (path, content) => {
 };
 
 const html = await (await fetch("https://deeeep.io/")).text();
+recursiveWriteFileSync("client/index.html", html);
 const files = [
 	/\/assets\/index\.[a-f0-9]+\.js/i,
 	/\/assets\/vendor\.[a-f0-9]+\.js/i,
