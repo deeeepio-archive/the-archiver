@@ -1,0 +1,36 @@
+name: Archive client
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  scrape-client:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout scraper
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          ref: main
+
+      - name: Checkout client archive
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          ref: main
+          repository: deeeepio-archive/client
+          path: client
+
+      - name: Run client archive script
+        run: |
+          npm run scrape:client
+
+      - name: Save changes to client archive
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update client archive
+          repository: client

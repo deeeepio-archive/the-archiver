@@ -6,6 +6,7 @@
 		"scrape:forumPosts": "node scrapers/forumPosts/index.js",
 		"scrape:maps": "node scrapers/maps/index.js",
 		"scrape:users": "node scrapers/users/index.js",
+		"scrape:client": "node scrapers/client/index.js",
 
 		"scripts:migrate-folders": "node scripts/migrate-folders.js"
 	}
