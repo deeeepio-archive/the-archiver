@@ -8,6 +8,8 @@ const recursiveWriteFileSync = (path, content) => {
 	fs.writeFileSync(path, content);
 };
 
+fs.rmSync("client/assets", { recursive: true, force: true });
+
 const html = await (await fetch("https://deeeep.io/")).text();
 recursiveWriteFileSync("client/index.html", html);
 const files = [
