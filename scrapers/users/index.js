@@ -79,7 +79,7 @@ const getUser = async (id) => {
 
 let allInvalid = true;
 const start = Date.now();
-for (let i = progress.users; i < progress.users + fetchNums; i += 20) {
+for (let i = progress.users; i < progress.users + fetchNums; i++) {
 	try {
 		const time = Date.now();
 		if (time - start > 4.5 * 60 * 1000) {
@@ -88,7 +88,7 @@ for (let i = progress.users; i < progress.users + fetchNums; i += 20) {
 		}
 
 		console.log("Fetching user ID", i);
-		newProgress.users = i + 20;
+		newProgress.users = i + 1;
 
 		const user = await getUser(i);
 		if (user === null) {
