@@ -72,7 +72,7 @@ fs.writeFileSync(
 	generateContent({
 		forumPosts: 9,
 		maps: 9,
-		users: 9,
+		users: 8,
 	}),
 	"utf-8",
 );
