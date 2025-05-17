@@ -11,7 +11,7 @@ concurrency:
 
 jobs:`;
 
-const template = (type, num) =>
+const template = (type, num, sparse) =>
 	`
   scrape-${type}-${num}:
     runs-on: ubuntu-latest${
@@ -34,8 +34,12 @@ const template = (type, num) =>
         with:
           token: \${{ secrets.ACCESS_TOKEN }}
           ref: main
-          sparse-checkout: .
-          repository: deeeepio-archive/${type}
+          ${
+						sparse
+							? `sparse-checkout: .
+          `
+							: ""
+					}repository: deeeepio-archive/${type}
           path: ${type}
 
       - name: Run ${type} archive script
@@ -46,18 +50,28 @@ const template = (type, num) =>
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Update ${type} archive
-          repository: ${type}
-          add_options: --sparse
+          repository: ${type}${
+						sparse
+							? `
+          add_options: --sparse`
+							: ""
+					}
 `;
 
 const types = ["forumPosts", "maps", "playerActivity", "users"];
 const generateContent = (scrapers) => {
 	let file = header;
-	const maxLength = Math.max(...Object.values(scrapers));
+	const maxLength = Math.max(
+		...Object.values(scrapers).map((n) => (typeof n === "number" ? n : n[0])),
+	);
 	for (let i = 1; i <= maxLength; i++) {
 		for (const type of types) {
-			if (scrapers[type] >= i) {
-				file += template(type, i);
+			const n =
+				typeof scrapers[type] === "number" ? scrapers[type] : scrapers[type][0];
+			const sparse =
+				typeof scrapers[type] === "number" ? true : scrapers[type][1];
+			if (n >= i) {
+				file += template(type, i, sparse);
 			}
 		}
 	}
@@ -69,7 +83,7 @@ fs.writeFileSync(
 	generateContent({
 		forumPosts: 9,
 		maps: 9,
-		playerActivity: 1,
+		playerActivity: [1, false],
 		users: 8,
 	}),
 	"utf-8",

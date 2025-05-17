@@ -86,7 +86,6 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
-          sparse-checkout: .
           repository: deeeepio-archive/playerActivity
           path: playerActivity
 
@@ -99,7 +98,6 @@ jobs:
         with:
           commit_message: Update playerActivity archive
           repository: playerActivity
-          add_options: --sparse
 
   scrape-users-1:
     runs-on: ubuntu-latest
