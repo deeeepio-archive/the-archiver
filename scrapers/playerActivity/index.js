@@ -6,14 +6,12 @@ const data = await (
 	await fetch("https://api.deeeep.io/hosts?servers=1")
 ).json();
 
-const hosts = JSON.parse(
-	fs.readFileSync("player-activity/hosts.json", "utf-8"),
-);
+const hosts = JSON.parse(fs.readFileSync("playerActivity/hosts.json", "utf-8"));
 for (const host of data.hosts) {
 	hosts[host.id] = host;
 
 	let activityData = "";
-	const file = `player-activity/records/${host.id}/${host.id}-${date.getUTCFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}.csv`;
+	const file = `playerActivity/records/${host.id}/${host.id}-${date.getUTCFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}.csv`;
 	if (fs.existsSync(file)) {
 		activityData = fs.readFileSync(file, "utf-8");
 	} else {
@@ -26,7 +24,7 @@ for (const host of data.hosts) {
 	fs.writeFileSync(file, activityData, "utf-8");
 }
 fs.writeFileSync(
-	"player-activity/hosts.json",
+	"playerActivity/hosts.json",
 	JSON.stringify(hosts, null, 2),
 	"utf-8",
 );
