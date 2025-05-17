@@ -70,6 +70,37 @@ jobs:
           repository: maps
           add_options: --sparse
 
+  scrape-playerActivity-1:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout scraper
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          ref: main
+
+      - name: Checkout playerActivity archive
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          ref: main
+          sparse-checkout: .
+          repository: deeeepio-archive/playerActivity
+          path: playerActivity
+
+      - name: Run playerActivity archive script
+        run: |
+          npm run scrape:playerActivity
+
+      - name: Save changes to playerActivity archive
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update playerActivity archive
+          repository: playerActivity
+          add_options: --sparse
+
   scrape-users-1:
     runs-on: ubuntu-latest
     permissions:

@@ -50,13 +50,10 @@ const template = (type, num) =>
           add_options: --sparse
 `;
 
-const types = ["forumPosts", "maps", "users"];
+const types = ["forumPosts", "maps", "playerActivity", "users"];
 const generateContent = (scrapers) => {
 	let file = header;
 	const maxLength = Math.max(...Object.values(scrapers));
-	// file += Array.from({ length: num * types.length })
-	// 	.map((_, i) => template(types[i % types.length], i + 1))
-	// 	.join("");
 	for (let i = 1; i <= maxLength; i++) {
 		for (const type of types) {
 			if (scrapers[type] >= i) {
@@ -72,6 +69,7 @@ fs.writeFileSync(
 	generateContent({
 		forumPosts: 9,
 		maps: 9,
+		playerActivity: 1,
 		users: 8,
 	}),
 	"utf-8",
