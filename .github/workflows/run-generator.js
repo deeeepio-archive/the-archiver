@@ -58,12 +58,12 @@ const template = (type, num, sparse) =>
 					}
 `;
 
-const types = ["forumPosts", "maps", "playerActivity", "users"];
 const generateContent = (scrapers) => {
 	let file = header;
 	const maxLength = Math.max(
 		...Object.values(scrapers).map((n) => (typeof n === "number" ? n : n[0])),
 	);
+	const types = Object.keys(scrapers);
 	for (let i = 1; i <= maxLength; i++) {
 		for (const type of types) {
 			const n =
@@ -84,6 +84,7 @@ fs.writeFileSync(
 		forumPosts: 9,
 		maps: 9,
 		playerActivity: [1, false],
+		playHistories: 9,
 		users: 8,
 	}),
 	"utf-8",
