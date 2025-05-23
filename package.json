@@ -8,6 +8,7 @@
 		"scrape:users": "node scrapers/users/index.js",
 		"scrape:client": "node scrapers/client/index.js",
 		"scrape:playerActivity": "node scrapers/playerActivity/index.js",
+		"scrape:playHistories": "node scrapers/playHistories/index.js",
 
 		"scripts:migrate-folders": "node scripts/migrate-folders.js"
 	}
