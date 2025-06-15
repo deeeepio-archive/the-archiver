@@ -84,7 +84,7 @@ fs.writeFileSync(
 		forumPosts: 9,
 		maps: 9,
 		playerActivity: [1, false],
-		playHistories: 7,
+		playHistories: 6,
 		users: 8,
 	}),
 	"utf-8",
