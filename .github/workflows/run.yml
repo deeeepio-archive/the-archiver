@@ -609,38 +609,6 @@ jobs:
           repository: maps
           add_options: --sparse
 
-  scrape-playHistories-5:
-    runs-on: ubuntu-latest
-    needs: scrape-playHistories-4
-    permissions:
-      contents: write
-    steps:
-      - name: Checkout scraper
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.ACCESS_TOKEN }}
-          ref: main
-
-      - name: Checkout playHistories archive
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.ACCESS_TOKEN }}
-          ref: main
-          sparse-checkout: .
-          repository: deeeepio-archive/playHistories
-          path: playHistories
-
-      - name: Run playHistories archive script
-        run: |
-          npm run scrape:playHistories
-
-      - name: Save changes to playHistories archive
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: Update playHistories archive
-          repository: playHistories
-          add_options: --sparse
-
   scrape-users-5:
     runs-on: ubuntu-latest
     needs: scrape-users-4
