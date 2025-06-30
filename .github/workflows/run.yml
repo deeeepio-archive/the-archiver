@@ -19,6 +19,10 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
 
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
+
       - name: Checkout forumPosts archive
         uses: actions/checkout@v4
         with:
@@ -49,6 +53,10 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
+
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
 
       - name: Checkout maps archive
         uses: actions/checkout@v4
@@ -81,6 +89,10 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
 
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
+
       - name: Checkout playerActivity archive
         uses: actions/checkout@v4
         with:
@@ -109,6 +121,10 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
+
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
 
       - name: Checkout playHistories archive
         uses: actions/checkout@v4
@@ -140,6 +156,10 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
+
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
 
       - name: Checkout users archive
         uses: actions/checkout@v4
@@ -173,6 +193,10 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
 
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
+
       - name: Checkout forumPosts archive
         uses: actions/checkout@v4
         with:
@@ -204,6 +228,10 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
+
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
 
       - name: Checkout maps archive
         uses: actions/checkout@v4
@@ -237,6 +265,10 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
 
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
+
       - name: Checkout playHistories archive
         uses: actions/checkout@v4
         with:
@@ -268,6 +300,10 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
+
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
 
       - name: Checkout users archive
         uses: actions/checkout@v4
@@ -301,6 +337,10 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
 
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
+
       - name: Checkout forumPosts archive
         uses: actions/checkout@v4
         with:
@@ -332,6 +372,10 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
+
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
 
       - name: Checkout maps archive
         uses: actions/checkout@v4
@@ -365,6 +409,10 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
 
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
+
       - name: Checkout playHistories archive
         uses: actions/checkout@v4
         with:
@@ -396,6 +444,10 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
+
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
 
       - name: Checkout users archive
         uses: actions/checkout@v4
@@ -429,6 +481,10 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
 
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
+
       - name: Checkout forumPosts archive
         uses: actions/checkout@v4
         with:
@@ -460,6 +516,10 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
+
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
 
       - name: Checkout maps archive
         uses: actions/checkout@v4
@@ -493,6 +553,10 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
 
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
+
       - name: Checkout playHistories archive
         uses: actions/checkout@v4
         with:
@@ -524,6 +588,10 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
+
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
 
       - name: Checkout users archive
         uses: actions/checkout@v4
@@ -557,6 +625,10 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
 
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
+
       - name: Checkout forumPosts archive
         uses: actions/checkout@v4
         with:
@@ -588,6 +660,10 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
+
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
 
       - name: Checkout maps archive
         uses: actions/checkout@v4
@@ -621,6 +697,10 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
 
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
+
       - name: Checkout users archive
         uses: actions/checkout@v4
         with:
@@ -652,6 +732,10 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
+
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
 
       - name: Checkout forumPosts archive
         uses: actions/checkout@v4
@@ -685,6 +769,10 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
 
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
+
       - name: Checkout maps archive
         uses: actions/checkout@v4
         with:
@@ -716,6 +804,10 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
+
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
 
       - name: Checkout users archive
         uses: actions/checkout@v4
@@ -749,6 +841,10 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
 
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
+
       - name: Checkout forumPosts archive
         uses: actions/checkout@v4
         with:
@@ -780,6 +876,10 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
+
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
 
       - name: Checkout maps archive
         uses: actions/checkout@v4
@@ -813,6 +913,10 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
 
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
+
       - name: Checkout users archive
         uses: actions/checkout@v4
         with:
@@ -844,6 +948,10 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
+
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
 
       - name: Checkout forumPosts archive
         uses: actions/checkout@v4
@@ -877,6 +985,10 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
 
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
+
       - name: Checkout maps archive
         uses: actions/checkout@v4
         with:
@@ -908,6 +1020,10 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
+
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
 
       - name: Checkout users archive
         uses: actions/checkout@v4
@@ -941,6 +1057,10 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
 
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
+
       - name: Checkout forumPosts archive
         uses: actions/checkout@v4
         with:
@@ -972,6 +1092,10 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
+
+      - name: Check API status
+        run: |
+          npm run scripts:check-api
 
       - name: Checkout maps archive
         uses: actions/checkout@v4

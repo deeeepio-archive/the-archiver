@@ -10,6 +10,7 @@
 		"scrape:playerActivity": "node scrapers/playerActivity/index.js",
 		"scrape:playHistories": "node scrapers/playHistories/index.js",
 
+    "scripts:check-api": "node scripts/check-api.js",
 		"scripts:migrate-folders": "node scripts/migrate-folders.js"
 	}
 }

@@ -29,6 +29,10 @@ const template = (type, num, sparse) =>
           token: \${{ secrets.ACCESS_TOKEN }}
           ref: main
 
+      - name: Check API availability
+        run: |
+          npm run scripts:check-api
+
       - name: Checkout ${type} archive
         uses: actions/checkout@v4
         with:
