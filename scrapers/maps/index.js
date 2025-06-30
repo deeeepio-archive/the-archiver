@@ -25,7 +25,7 @@ const getMap = async (id) => {
 		return "throttled";
 	}
 	if (map.statusCode >= 400) {
-		return null;
+		throw new Error("Invalid response");
 	}
 	return map;
 };
@@ -33,34 +33,30 @@ const getMap = async (id) => {
 let allInvalid = true;
 const start = Date.now();
 for (let i = progress.maps; i < progress.maps + fetchNums; i++) {
-	try {
-		const time = Date.now();
-		if (time - start > 4.5 * 60 * 1000) {
-			console.log("Max time of 4.5 minutes reached!");
-			break;
-		}
-
-		console.log("Fetching map ID", i);
-		newProgress.maps = i + 1;
-
-		const map = await getMap(i);
-		if (map === null) {
-			continue;
-		}
-		if (map === "throttled") {
-			console.log("Rate limit reached!");
-			newProgress.maps = i;
-			break;
-		}
-		allInvalid = false;
-		map.archived_at = new Date().toJSON();
-
-		const p = `maps/${getPath(i)}`;
-		fs.mkdirSync(p.split("/").slice(0, -1).join("/"), { recursive: true });
-		fs.writeFileSync(p, JSON.stringify(map, null, 2));
-	} catch (e) {
-		console.error(e);
+	const time = Date.now();
+	if (time - start > 4.5 * 60 * 1000) {
+		console.log("Max time of 4.5 minutes reached!");
+		break;
 	}
+
+	console.log("Fetching map ID", i);
+	newProgress.maps = i + 1;
+
+	const map = await getMap(i);
+	if (map === null) {
+		continue;
+	}
+	if (map === "throttled") {
+		console.log("Rate limit reached!");
+		newProgress.maps = i;
+		break;
+	}
+	allInvalid = false;
+	map.archived_at = new Date().toJSON();
+
+	const p = `maps/${getPath(i)}`;
+	fs.mkdirSync(p.split("/").slice(0, -1).join("/"), { recursive: true });
+	fs.writeFileSync(p, JSON.stringify(map, null, 2));
 }
 if (allInvalid && progress.maps > progress.newThreshold) {
 	newProgress.newThreshold = progress.maps;

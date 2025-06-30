@@ -24,7 +24,7 @@ const getMap = async (id) => {
 		return "throttled";
 	}
 	if (playHistory.statusCode >= 400) {
-		return null;
+		throw new Error("Invalid response");
 	}
 	return playHistory;
 };
@@ -36,34 +36,30 @@ for (
 	i < progress.playHistories + fetchNums;
 	i++
 ) {
-	try {
-		const time = Date.now();
-		if (time - start > 4.5 * 60 * 1000) {
-			console.log("Max time of 4.5 minutes reached!");
-			break;
-		}
-
-		console.log("Fetching playHistory ID", i);
-		newProgress.playHistories = i + 1;
-
-		const playHistory = await getMap(i);
-		if (playHistory === null) {
-			continue;
-		}
-		if (playHistory === "throttled") {
-			console.log("Rate limit reached!");
-			newProgress.playHistories = i;
-			break;
-		}
-		allInvalid = false;
-		playHistory.archived_at = new Date().toJSON();
-
-		const p = `playHistories/${getPath(i)}`;
-		fs.mkdirSync(p.split("/").slice(0, -1).join("/"), { recursive: true });
-		fs.writeFileSync(p, JSON.stringify(playHistory, null, 2));
-	} catch (e) {
-		console.error(e);
+	const time = Date.now();
+	if (time - start > 4.5 * 60 * 1000) {
+		console.log("Max time of 4.5 minutes reached!");
+		break;
 	}
+
+	console.log("Fetching playHistory ID", i);
+	newProgress.playHistories = i + 1;
+
+	const playHistory = await getMap(i);
+	if (playHistory === null) {
+		continue;
+	}
+	if (playHistory === "throttled") {
+		console.log("Rate limit reached!");
+		newProgress.playHistories = i;
+		break;
+	}
+	allInvalid = false;
+	playHistory.archived_at = new Date().toJSON();
+
+	const p = `playHistories/${getPath(i)}`;
+	fs.mkdirSync(p.split("/").slice(0, -1).join("/"), { recursive: true });
+	fs.writeFileSync(p, JSON.stringify(playHistory, null, 2));
 }
 if (allInvalid && progress.playHistories > progress.newThreshold) {
 	newProgress = { ...progress };

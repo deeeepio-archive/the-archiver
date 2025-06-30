@@ -46,7 +46,7 @@ const getUser = async (id) => {
 		return "throttled";
 	}
 	if (user.statusCode >= 400) {
-		return null;
+		throw new Error("Invalid response");
 	}
 	const [socialNetworks, userStats, creationsMaps, creationsSkins] =
 		await Promise.all([
@@ -80,34 +80,30 @@ const getUser = async (id) => {
 let allInvalid = true;
 const start = Date.now();
 for (let i = progress.users; i < progress.users + fetchNums; i++) {
-	try {
-		const time = Date.now();
-		if (time - start > 4.5 * 60 * 1000) {
-			console.log("Max time of 4.5 minutes reached!");
-			break;
-		}
-
-		console.log("Fetching user ID", i);
-		newProgress.users = i + 1;
-
-		const user = await getUser(i);
-		if (user === null) {
-			continue;
-		}
-		if (user === "throttled") {
-			console.log("Rate limit reached!");
-			newProgress.users = i;
-			break;
-		}
-		allInvalid = false;
-		user.archived_at = new Date().toJSON();
-
-		const p = `users/${getPath(i)}`;
-		fs.mkdirSync(p.split("/").slice(0, -1).join("/"), { recursive: true });
-		fs.writeFileSync(p, JSON.stringify(user, null, 2));
-	} catch (e) {
-		console.error(e);
+	const time = Date.now();
+	if (time - start > 4.5 * 60 * 1000) {
+		console.log("Max time of 4.5 minutes reached!");
+		break;
 	}
+
+	console.log("Fetching user ID", i);
+	newProgress.users = i + 1;
+
+	const user = await getUser(i);
+	if (user === null) {
+		continue;
+	}
+	if (user === "throttled") {
+		console.log("Rate limit reached!");
+		newProgress.users = i;
+		break;
+	}
+	allInvalid = false;
+	user.archived_at = new Date().toJSON();
+
+	const p = `users/${getPath(i)}`;
+	fs.mkdirSync(p.split("/").slice(0, -1).join("/"), { recursive: true });
+	fs.writeFileSync(p, JSON.stringify(user, null, 2));
 }
 if (allInvalid && progress.users > progress.newThreshold) {
 	newProgress.newThreshold = progress.users;

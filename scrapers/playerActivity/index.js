@@ -7,6 +7,9 @@ const data = await (
 ).json();
 
 const hosts = JSON.parse(fs.readFileSync("playerActivity/hosts.json", "utf-8"));
+if (hosts.statusCode >= 400) {
+	throw new Error("Invalid response");
+}
 for (const host of data.hosts) {
 	hosts[host.id] = host;
 

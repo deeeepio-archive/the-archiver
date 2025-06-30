@@ -37,6 +37,9 @@ const getRegion = async (id) => {
 		if (post.statusCode === 429) {
 			return { post: "throttled", region: null };
 		}
+		if (post.statusCode >= 400) {
+			throw new Error("Invalid response");
+		}
 	}
 	return { post: null, region: null };
 };
