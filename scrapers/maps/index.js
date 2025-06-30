@@ -52,7 +52,6 @@ for (let i = progress.maps; i < progress.maps + fetchNums; i++) {
 		break;
 	}
 	allInvalid = false;
-	map.archived_at = new Date().toJSON();
 
 	const p = `maps/${getPath(i)}`;
 	fs.mkdirSync(p.split("/").slice(0, -1).join("/"), { recursive: true });

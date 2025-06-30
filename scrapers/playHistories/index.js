@@ -55,7 +55,6 @@ for (
 		break;
 	}
 	allInvalid = false;
-	playHistory.archived_at = new Date().toJSON();
 
 	const p = `playHistories/${getPath(i)}`;
 	fs.mkdirSync(p.split("/").slice(0, -1).join("/"), { recursive: true });

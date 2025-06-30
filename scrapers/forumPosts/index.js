@@ -87,7 +87,6 @@ for (let i = progress.forumPosts; i < progress.forumPosts + fetchNums; i++) {
 			break;
 		}
 		allInvalid = false;
-		post.archived_at = new Date().toJSON();
 
 		const p = `forumPosts/${getPath(i)}`;
 		fs.mkdirSync(p.split("/").slice(0, -1).join("/"), { recursive: true });

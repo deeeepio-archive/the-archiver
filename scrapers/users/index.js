@@ -99,7 +99,6 @@ for (let i = progress.users; i < progress.users + fetchNums; i++) {
 		break;
 	}
 	allInvalid = false;
-	user.archived_at = new Date().toJSON();
 
 	const p = `users/${getPath(i)}`;
 	fs.mkdirSync(p.split("/").slice(0, -1).join("/"), { recursive: true });
