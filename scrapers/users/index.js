@@ -45,7 +45,10 @@ const getUser = async (id) => {
 	if (user.statusCode === 429) {
 		return "throttled";
 	}
-	if (user.statusCode >= 400) {
+	if (user.statusCode >= 400 && user.statusCode < 450) {
+		return null;
+	}
+	if (user.statusCode >= 450) {
 		throw new Error("Invalid response");
 	}
 	const [socialNetworks, userStats, creationsMaps, creationsSkins] =

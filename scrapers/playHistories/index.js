@@ -23,7 +23,10 @@ const getMap = async (id) => {
 	if (playHistory.statusCode === 429) {
 		return "throttled";
 	}
-	if (playHistory.statusCode >= 400) {
+	if (playHistory.statusCode >= 400 && playHistory.statusCode < 450) {
+		return null;
+	}
+	if (playHistory.statusCode >= 450) {
 		throw new Error("Invalid response");
 	}
 	return playHistory;

@@ -24,7 +24,10 @@ const getMap = async (id) => {
 	if (map.statusCode === 429) {
 		return "throttled";
 	}
-	if (map.statusCode >= 400) {
+	if (map.statusCode >= 400 && map.statusCode < 450) {
+		return null;
+	}
+	if (map.statusCode >= 450) {
 		throw new Error("Invalid response");
 	}
 	return map;
