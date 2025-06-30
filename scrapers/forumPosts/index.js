@@ -24,6 +24,9 @@ const getRegion = async (id) => {
 		const post = await fetchJson(
 			`https://api.deeeep.io/forumPosts/${cached}/${id}`,
 		);
+		if (post.statusCode >= 400) {
+			throw new Error("Invalid response");
+		}
 		return { post, region: cached };
 	}
 
